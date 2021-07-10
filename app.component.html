@@ -1,0 +1,65 @@
+<nav class="navbar-dark bg-primary">
+  
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mt-4">
+      <div class="card mt-8">
+        <div class="card-body">
+          <div class="card-title">
+            inserta o editar un asistente
+          </div>
+          <div class="form-group">
+            <p>nombre y apellido</p>
+            <input type="text" [(ngModel)]="selectedasistente.nombre" placeholder="inserte nombre y apellido" class="form-control">
+          </div>
+          <div class="form-group" name="formulario">
+            <div class="radio">
+              <p>tipo de documento: </p>
+              <input type="radio" name="Tdoc" id="cc">
+              <label for="cc">C.C</label>
+
+              <input type="radio" name="Tdoc" id="ce">
+              <label for="ce"> C.E </label>
+              
+              <input type="radio" name="Tdoc" id="pasaporte">
+              <label for="pasaporte"> pasaporte </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <p>numero de documento</p>
+            <input type="text" [(ngModel)]="selectedasistente.Ndocumento" placeholder="inserte el numero de documento" class="form-control">
+          </div>
+          <div class="form-group">
+            <p>numero de telefono</p>
+            <input type="text" [(ngModel)]="selectedasistente.telefono" placeholder="inserte el numero telefonico" class="form-control">
+          </div>
+          <div class="form-group">
+            <p>E-mail</p>
+            <input type="text" [(ngModel)]="selectedasistente.Email" placeholder="inserte nel e-mail" class="form-control">
+          </div>
+          <button (click)="addoredit()" class="btn btn-primary">
+            submit
+          </button>
+          <button
+          *ngIf="selectedasistente.id !==0 "
+          class="btn btn-danger"
+          (click)="delete()"
+          >
+            delete
+          </button>
+          <ul class="list-group">
+            <li 
+            *ngFor="let asistente of asistentesArray"
+            class="list-group-item list-group-item-action"
+            (click)="editar(asistente)">
+            <span class="badge badge-primary">{{asistente.id + "-"}}</span>{{asistente.nombre}}-{{asistente.Tdocumento}}-{{asistente.Ndocumento}}-{{asistente.telefono}}-{{asistente.Email}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+    </div>
+  </div>
+</div>
